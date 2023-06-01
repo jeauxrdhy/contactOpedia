@@ -9,6 +9,44 @@ import Header from '../Header/Header.component'
 
 class ContactIndex extends React.Component
 {
+    constructor(props)
+    {
+        super(props)
+        this.state = 
+        {
+            contactList:
+            [
+                {
+                    id: 1,
+                    name: 'james',
+                    phone: '989-456-8484',
+                    email: 'lajhf@afdkjl.com',
+                    isFavorite: true
+                },
+                {
+                    id: 2,
+                    name: 'sherry',
+                    phone: '989-456-8484',
+                    email: 'lajhf@afdkjl.com',
+                    isFavorite: false
+                },
+                {
+                    id: 3,
+                    name: 'lucious',
+                    phone: '989-456-8484',
+                    email: 'lajhf@afdkjl.com',
+                    isFavorite: true
+                },
+                {
+                    id: 4,
+                    name: 'draco',
+                    phone: '989-456-8484',
+                    email: 'lajhf@afdkjl.com',
+                    isFavorite: false
+                }
+            ]
+        }
+    }
 
     render()
     {
@@ -27,10 +65,17 @@ class ContactIndex extends React.Component
                             <AddContact />
                         </div>
                         <div className="row py-2">
-                            <FavoriteContact />
+                            <FavoriteContact
+                                contacts={this.state.contactList.filter(
+                                    (u) => u.isFavorite == true
+                                )}
+                            />
                         </div>
                         <div className="row py-2">
-                            <GeneralContact />
+                            <GeneralContact
+                            contacts={this.state.contactList.filter(
+                                (u) => u.isFavorite == false
+                            )} />
                         </div>
                     </div>
                 </div>

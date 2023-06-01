@@ -1,11 +1,12 @@
 import React from 'react'
+import Contact from '../Contact/Contact'
 
-function FavoriteContact() {
+function FavoriteContact(props) {
   return (
     <div>
-        <button className="btn btn-secondary form-control">
-            Favorite Contact
-        </button>
+        {props.contacts.map((contact,index)=>(
+            <Contact contact={contact} key = {index} />
+          ))}
     </div>
   )
 }
