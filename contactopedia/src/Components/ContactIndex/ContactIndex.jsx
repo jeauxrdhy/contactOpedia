@@ -87,6 +87,32 @@ class ContactIndex extends React.Component
         }
     }
 
+    handleToggleFavorite = (contact) => {
+        this.setState((prev) => {
+            return{
+                contactList: prev.contactList.map((obj)=>{
+                    if(obj.id == contact.id)
+                    {
+                        return{...obj, isFavorite: !obj.isFavorite}
+                    }
+                    return obj
+                })
+            }
+        })
+    }
+
+    handleDeleteContact = (contactId) => {
+        this.setState((prev) => {
+            return{
+                contactList: prev.contactList.filter((obj)=>{
+                    return obj.id !== contactId
+                })
+            }
+        })
+    }
+
+
+
     render()
     {
         return(
@@ -112,15 +138,20 @@ class ContactIndex extends React.Component
                                 contacts={this.state.contactList.filter(
                                     (u) => u.isFavorite == true
                                 )}
+                                favoriteClick={this.handleToggleFavorite}
+                                deleteContact={this.handleDeleteContact}
                             />
                             </div>
                         </div>
                         <div className="row py-2">
                         <div className="col-8 offset-2 row">
                             <GeneralContact
-                            contacts={this.state.contactList.filter(
-                                (u) => u.isFavorite == false
-                            )} />
+                                contacts={this.state.contactList.filter(
+                                    (u) => u.isFavorite == false
+                                )}
+                                favoriteClick={this.handleToggleFavorite}
+                                deleteContact={this.handleDeleteContact}    
+                            />
                             </div>
                         </div>
                     </div>
