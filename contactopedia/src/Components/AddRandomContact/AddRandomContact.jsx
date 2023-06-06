@@ -3,7 +3,6 @@ import { getRandomUser } from '../../Utilities/Api'
 
 const GetRandomContact = async (props) => {
   const responseFromAPI = await getRandomUser()
-  console.log(responseFromAPI)
 
   return props.handleAddRandomContact({
     name: responseFromAPI.data.first_name + " " + responseFromAPI.data.last_name,
